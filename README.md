@@ -1,12 +1,12 @@
 # Mutation Test Kata
 Code kata: using mutation testing to improve quality of unit tests 
 
-#### What Is a Code Kata?
+### What Is a Code Kata?
 A code kata is an exercise in programming which helps programmers hone their skills through practice. A code katas is usually set up as a series of unit tests, which fail. Your task is to write code to make them pass. The idea is inspired by the Japanese concept of kata in the martial arts. Just like in the martial arts, you can repeat a kata multiple times to make improvements to you solutions. 
  
 Please note that this kata is a little different - all the tests initially pass. Don't worry, all the same ideas mentioned above still apply here. We will improve the tests, in the process making them fail, and then we will fix the code to make the tests pass, but by then they will be good tests. 
 
-#### Running This Kata
+### Running This Kata
 To build this kata you will need
 * Java 8 or newer
 * Maven 3.6.1 or newer
@@ -26,7 +26,7 @@ The tests that have been fixed this way should catch mutation introduced by PITe
 
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
-#### Testing Layers
+### Testing Layers
 The table below lists common types of test in a software system.
 
 The meaning of the columns:
@@ -36,7 +36,7 @@ The meaning of the columns:
 * **Framework** - Example of tools supporting this type of testing
 <table>
   <tr>
-    <th>Category</th> <th>Purpose</th> <th>Who writes</th> <th>Tools</th>
+    <th>Category</th> <th>Purpose</th> <th>Who</th> <th>Tools</th>
   </tr>
   <tr>
     <td>Unit</td>
@@ -88,14 +88,14 @@ The meaning of the columns:
   </tr>
 </table>
 
-#### Unit Test Best Practices
+### Unit Test Best Practices
 * Automated tests - require no human involvement to determine the outcome
 * Each test method tests one scenario
 * Test method name describes the scenario being tested
 * Tests are fast to execute - the relevant tests execute in a a few seconds or faster  
 * No external dependencies
 
-#### Unit Test Smells
+### Unit Test Smells
 * No assertions
 * Irrelevant assertions 
 * Use of Mocks
@@ -106,7 +106,7 @@ The meaning of the columns:
 * Long running tests
 * `@Ingore`'d or commented out tests
 
-#### Unit Test Quality
+### Unit Test Quality
 * Test coverage
     * %-ge of LOC, methods, classes covered by tests
     * Does not guarantee the the covered code is actually tested
@@ -115,10 +115,10 @@ The meaning of the columns:
 * ...don't optimize just for coverage
 * How do we make sure that the tests actually test?
 
-#### Mutation Testing
+### Mutation Testing
 Mutation testing is a way to validate the quality of unit tests. It means introducing changes in the code and observing the behavior of the unit tests. Assuming that all the tests were passing before the mutation, some of the unit tests will either start failing (good) or all the tests will keep on passing (bad). The latter scenario means that the unit tests do not really validate outcomes of the code under test: the results for all intents and purposes become random, yet all the tests pass.   
 
-#### Test Driven Development
+### Test Driven Development
 * Write a test
     * Take the user's perspective: "What is the API that would make my job the easiest"
     * Think small increments
@@ -133,6 +133,6 @@ Mutation testing is a way to validate the quality of unit tests. It means introd
     * User friendly interfaces
     * Well factored, not overly abstracted code
 
-#### Useful Links
+### Useful Links
 * [JUnit](http://junit.org)
 * [PITest](http://pitest.org)
