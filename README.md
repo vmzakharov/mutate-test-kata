@@ -18,7 +18,7 @@ Run all the unit tests in the `mtk.domain.CompanyTest` class. They should all pa
 
 Unfortunately that would be a terrible idea as the code is full of bugs. To see the effects of some of the bugs, just rain the `mtk.CompanyRunner.main()` method and looks at the output. What is going on? How can we have all these bugs despite having all these test?
 
-Let's run the maven **`org.pitest:pitest-maven:mutationCoverage`** task. This task will use PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
+Let's run the maven **`org.pitest:pitest-maven:mutationCoverage`** task. You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. This task will use PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
 
 Each test in the test class exhibits one or more test smells. Going through the tests one by one, **your first task is to fix the smells**. To help you, the comments in the test methods may explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. **Yor second task is to fix the business logic**, which should make the tests pass.
 
@@ -27,7 +27,7 @@ The tests that have been fixed this way should catch mutation introduced by PITe
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
 ### Testing Layers
-The table below lists common types of test in a software system.
+The table below lists common types of tests in a software system.
 
 The meaning of the columns:
 * **Category** - A category of tests
@@ -102,11 +102,12 @@ The meaning of the columns:
 * Expected results are calculated rather than explicitly specified
 * Test code reuse (that is test logic reuse, test utilities are good)
 * Test data reuse
-* "Flickering" tests
+* "Flickering" tests(tests with nondeterministic behavior)
 * Long running tests
 * `@Ingore`'d or commented out tests
 
 ### Unit Test Quality
+How can we measure the quality of the unit tests in a system? One metric, which is used broadly, is **test coverage**. Some things to keep in mind:
 * Test coverage
     * %-ge of LOC, methods, classes covered by tests
     * Does not guarantee the the covered code is actually tested
@@ -119,6 +120,8 @@ The meaning of the columns:
 Mutation testing is a way to validate the quality of unit tests. It means introducing changes in the code and observing the behavior of the unit tests. Assuming that all the tests were passing before the mutation, some of the unit tests will either start failing (good) or all the tests will keep on passing (bad). The latter scenario means that the unit tests do not really validate outcomes of the code under test: the results for all intents and purposes become random, yet all the tests pass.   
 
 ### Test Driven Development
+Adopting Test Driven Development (TDD) will result in better tests, better interfaces, less unnecessary code, and more confident and steady development process. Just follow these steps:
+
 * Write a test
     * Take the user's perspective: "What is the API that would make my job the easiest"
     * Think small increments
@@ -127,11 +130,13 @@ Mutation testing is a way to validate the quality of unit tests. It means introd
 * Refactor
     * Remove duplication
 * Repeat for all meaningfully different scenarios
-* Benefits
+* Reap the benefits
     * Almost all code is tested
     * You know when to stop coding
     * User friendly interfaces
     * Well factored, not overly abstracted code
+
+Sounds too good to be true? The secret is that TDD does require a lot of discipline from its practitioners to work in tiny increments, diligently following the steps above, and not cutting corners. Without the discipline it is possible to end upo with tests (and code under tests) of the usual "quality".
 
 ### Useful Links
 * [JUnit](http://junit.org)
