@@ -10,8 +10,7 @@
 
     <properties>
 <!--        <maven.compiler.release>11</maven.compiler.release>-->
-        <eclipseCollections.version>9.2.0</eclipseCollections.version>
-        <pitest.version>1.4.7</pitest.version>
+        <pitest.version>1.4.10</pitest.version>
     </properties>
 
     <dependencies>
@@ -20,24 +19,6 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections-api</artifactId>
-            <version>${eclipseCollections.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipseCollections.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections-testutils</artifactId>
-            <version>${eclipseCollections.version}</version>
         </dependency>
 
         <dependency>

@@ -20,12 +20,16 @@ public class Employee
 
     public String getName()
     {
-        return name;
+        return this.name;
     }
 
+    /**
+     * Set the employee name after removing leading and trailing spaces, which could be left by upstream system
+     * @param newName the new name for the employee, possibly with leading and trailing white space to be removed
+     */
     public void setName(String newName)
     {
-        name = newName.substring(1);
+        this.name = newName.replaceAll(" ", "");
     }
 
     public double getSalary()
@@ -36,5 +40,11 @@ public class Employee
     public void setSalary(double newSalary)
     {
         this.salary = newSalary;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Employee '" + this.id + "', '" + this.name + '\'';
     }
 }

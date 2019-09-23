@@ -1,13 +1,13 @@
 package mtk.domain;
 
-import org.eclipse.collections.api.list.MutableList;
-import org.eclipse.collections.impl.factory.Lists;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Company
 {
     private String name;
 
-    private MutableList<Employee> employees = Lists.mutable.of();
+    private List<Employee> employees = new ArrayList<>();
 
     public Company(String newName)
     {
@@ -36,12 +36,26 @@ public class Company
      */
     public void everybodyGetsRaiseBy(double incrementAsFraction)
     {
-        this.employees.each(e -> e.setSalary(e.getSalary() * (incrementAsFraction)));
+        this.employees.forEach(e -> e.setSalary(e.getSalary() * (incrementAsFraction)));
     }
 
+    /**
+     * Finds an employee by their id
+     * @param id the id of the employee to be found
+     * @return the employee with the id passed as the parameter or null if no such employee exists
+     */
     public Employee findEmployeeById(String id)
     {
-        return this.employees.detect(each -> each.getId().equals(id));
+        int foundIndex = 0;
+        for (int i = 0; i < this.employees.size(); i++)
+        {
+            if (this.employees.get(i).getId().equals(id))
+            {
+                foundIndex = i;
+                break;
+            }
+        }
+        return this.employees.get(foundIndex);
     }
 
     public int numberOfEmployees()

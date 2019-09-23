@@ -10,13 +10,13 @@ public class CompanyTest
     private Company company;
 
     @Before
-    public void setUp() throws Exception
+    public void setUp()
     {
         this.company = new Company("Megadyne, Inc.");
     }
 
     @After
-    public void tearDown() throws Exception
+    public void tearDown()
     {
         this.company = null;
     }
@@ -24,6 +24,10 @@ public class CompanyTest
     @Test
     public void createCompany()
     {
+        /*
+         * TEST SMELL: Mocks are used unnecessarily
+         */
+        // TODO: Add mocks
         Assert.assertNotNull(this.company);
         System.out.println(this.company.getName());
     }
@@ -39,7 +43,13 @@ public class CompanyTest
     @Test
     public void addEmployee()
     {
+        /*
+         * TEST SMELL: Irrelevant assertions
+         */
         this.company.addEmployee(new Employee("123", "Dave", 100_000.00));
+        Assert.assertTrue(this.company.numberOfEmployees() > 0);
+
+        this.company.addEmployee(new Employee("456", "Bob", 50_000.00));
         Assert.assertTrue(this.company.numberOfEmployees() > 0);
     }
 
@@ -56,7 +66,7 @@ public class CompanyTest
         this.company.addEmployee(new Employee("456", "Alice", 120_000.00));
         this.company.addEmployee(new Employee("789", "Bob",   110_000.00));
 
-        this.company.everybodyGetsRaiseBy(0.1);
+        this.company.everybodyGetsRaiseBy(increaseBy);
 
         Employee dave = this.company.findEmployeeById("123");
 
@@ -66,17 +76,15 @@ public class CompanyTest
     @Test
     public void findEmployeeById()
     {
+        /*
+         * TEST SMELL: No assertions
+         */
         this.company.addEmployee(new Employee("123", "Dave",  100_000.00));
         this.company.addEmployee(new Employee("456", "Alice", 100_000.00));
         this.company.addEmployee(new Employee("789", "Bob",   100_000.00));
 
         Employee hopefullyDave = this.company.findEmployeeById("123");
-
-        Assert.assertEquals("Dave", hopefullyDave.getName());
-
         Employee hopefullyNoOne = this.company.findEmployeeById("999");
-
-        Assert.assertNull(hopefullyNoOne);
     }
 
     @Test
@@ -91,9 +99,7 @@ public class CompanyTest
 
         Employee employee = this.company.findEmployeeById("123");
         employee.setName("Tom");
-
         employee = this.company.findEmployeeById("123");
         System.out.println(employee.getName().equals("Tom") ? "PASSED" : "FAILED");
-
     }
 }
