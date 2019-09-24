@@ -16,11 +16,11 @@ The domain for the kata is made up of two classes: Company and Employee.
 
 1.  **Run all the unit tests in the `mtk.domain.CompanyTest` class.** They should all pass. Check the test coverage metrics using either maven output or a coverage reporting function in your IDE test runner. The coverage should be close to 100%. Good news: there are tests, they all pass, and they cover all of our business logic. Looks like the software is ready to ship!
 
-    Unfortunately that would be a terrible idea as the code is full of bugs. To see the effects of some of the bugs, just rain the `mtk.CompanyRunner.main()` method and looks at the output. What is going on? How can we have all these bugs despite having all these test?
+    Unfortunately that would be a terrible idea as the code is full of bugs. To see the effects of some of the bugs, just run the `mtk.CompanyRunner.main()` method and looks at the output. What is going on? How can we have all these bugs despite having all these test?
 
 2.  **Run the `org.pitest:pitest-maven:mutationCoverage` maven task.** You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. This task will use PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
 
-3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, . To help you, the comments in the test methods may explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
+3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
 
 4.  **Fix the business logic**, to make the tests pass. Look at the comments in the code, they may explain its intended behavior (does not mean the method as written behaves as intended). 
 
@@ -28,7 +28,8 @@ The domain for the kata is made up of two classes: Company and Employee.
 
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
-### Testing Layers
+------------------------------------------------
+### Types of Tests
 The table below lists common types of tests in a software system.
 
 The meaning of the columns:
@@ -93,6 +94,7 @@ The meaning of the columns:
 ### Unit Test Best Practices
 * Automated tests - require no human involvement to determine the outcome
 * Each test method tests one scenario
+* Test the edge cases - try to cover all meaningfully different scenarios
 * Test method name describes the scenario being tested
 * Tests are fast to execute - the relevant tests execute in a a few seconds or faster  
 * No external dependencies
