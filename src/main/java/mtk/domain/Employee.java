@@ -9,8 +9,8 @@ public class Employee
     public Employee(String newId, String newName, double newSalary)
     {
         this.id = newId;
-        this.name = newName;
-        this.salary = newSalary;
+        this.setName(newName);
+        this.setSalary(newSalary);
     }
 
     public String getId()

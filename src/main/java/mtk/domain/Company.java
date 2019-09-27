@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Company
 {
-    private String name;
+    private String name = "No name";
 
     private List<Employee> employees = new ArrayList<>();
 
     public Company(String newName)
     {
-        this.name = newName;
+        this.setName(newName);
     }
 
     public String getName()
@@ -19,9 +19,8 @@ public class Company
         return this.name;
     }
 
-    public String renameCompanyAndReturnNewName(String newName)
+    public void setName(String newName)
     {
-        return newName;
     }
 
     public void addEmployee(Employee newEmployee)

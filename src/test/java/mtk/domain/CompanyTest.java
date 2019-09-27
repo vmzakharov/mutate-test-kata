@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 public class CompanyTest
 {
     private Company company;
@@ -35,9 +38,26 @@ public class CompanyTest
     @Test
     public void renameCompany()
     {
+        // TODO: better examples, use instance?
         String proposedName = "Cybertron Unlimited, Ltd.";
-        String renamedName = this.company.renameCompanyAndReturnNewName(proposedName);
-        Assert.assertEquals(proposedName, renamedName);
+
+        Company aCompany = mock(Company.class);
+
+        aCompany.setName(proposedName);
+
+        verify(aCompany).setName(proposedName);
+
+//        this.company.setName(proposedName);
+//        Assert.assertEquals(proposedName, proposedName);
+    }
+
+    @Test
+    public void leadingTrailingSpacesRemovedFromEmployeeName()
+    {
+        Employee employee1 = new Employee("001",    " Bob", 100_000.00);
+        Assert.assertEquals("Bob", employee1.getName());
+        Employee employee2 = new Employee("002", "Alice  ", 100_000.00);
+        Assert.assertEquals("Alice", employee2.getName());
     }
 
     @Test
