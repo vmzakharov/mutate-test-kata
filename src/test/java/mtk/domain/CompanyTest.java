@@ -5,8 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class CompanyTest
 {
@@ -25,30 +24,18 @@ public class CompanyTest
     }
 
     @Test
-    public void createCompany()
+    public void companyRenamed()
     {
         /*
-         * TEST SMELL: Mocks are used unnecessarily
+         * TEST SMELL: Mocks are used unnecessarily and validate behavior rather than outcome
          */
-        // TODO: Add mocks
-        Assert.assertNotNull(this.company);
-        System.out.println(this.company.getName());
-    }
-
-    @Test
-    public void renameCompany()
-    {
-        // TODO: better examples, use instance?
         String proposedName = "Cybertron Unlimited, Ltd.";
 
-        Company aCompany = mock(Company.class);
+        Company aCompany = spy(this.company);
 
         aCompany.setName(proposedName);
 
         verify(aCompany).setName(proposedName);
-
-//        this.company.setName(proposedName);
-//        Assert.assertEquals(proposedName, proposedName);
     }
 
     @Test
@@ -61,7 +48,7 @@ public class CompanyTest
     }
 
     @Test
-    public void addEmployee()
+    public void employeeAdded()
     {
         /*
          * TEST SMELL: Irrelevant assertions
@@ -79,10 +66,11 @@ public class CompanyTest
         /*
          * TEST SMELL: Calculated expected value
          */
-        double increaseBy = 0.1;
+        double increaseBy = 0.1; // everybody's salary should go up by this fraction
+
         double davesOriginalSalary = 100_000.00;
 
-        this.company.addEmployee(new Employee("123", "Dave",  100_000.00));
+        this.company.addEmployee(new Employee("123", "Dave",  davesOriginalSalary));
         this.company.addEmployee(new Employee("456", "Alice", 120_000.00));
         this.company.addEmployee(new Employee("789", "Bob",   110_000.00));
 
@@ -108,7 +96,7 @@ public class CompanyTest
     }
 
     @Test
-    public void employeeNameChange()
+    public void employeeNameChanged()
     {
         /*
          * TEST SMELL: using a print/log statement

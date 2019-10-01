@@ -26,7 +26,7 @@ public class CompanyRunner
         company.addEmployee(new Employee("006", "Anna Lee",  90_000.00));
 
         System.out.println("Welcome " + company.findEmployeeById("005").getName() + " and "
-                + company.findEmployeeById("006").getName() + " to the company!");
+                + company.findEmployeeById("006").getName() + " to the company");
 
         System.out.println("Now there are " + company.numberOfEmployees() + " employees at the company");
 
