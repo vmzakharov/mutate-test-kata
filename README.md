@@ -30,7 +30,7 @@ The rest of this documents offers some general pointers, which may come in handy
 
 ------------------------------------------------
 ### Types of Tests
-The table below lists common types of tests in a software system.
+The table below lists common types of tests in a software system. Our focus here is on unit tests, but it helps to put them in a context.
 
 The meaning of the columns:
 * **Category** - A category of tests
@@ -92,14 +92,16 @@ The meaning of the columns:
 </table>
 
 ### Unit Test Best Practices
+These are some of the practices to follow to ensure that the unit tests are effective, easy to maintain, easy to execute:
 * Automated tests - require no human involvement to determine the outcome
 * Each test method tests one scenario
 * Test the edge cases - try to cover all meaningfully different scenarios
 * Test method name describes the scenario being tested
-* Tests are fast to execute - the relevant tests execute in a a few seconds or faster  
+* Tests are fast to execute - the relevant tests execute in a few seconds or faster  
 * No external dependencies
 
 ### Unit Test Smells
+These are the signs that there is possibly something wrong with the test - either because the test itself is not well written, or the code under test is not test friendly (which probably means that this code is not well factored):
 * No assertions
 * Irrelevant assertions 
 * Use of Mocks
