@@ -18,7 +18,7 @@ The domain for the kata is made up of two classes: Company and Employee.
 
     Unfortunately that would be a terrible idea as the code is full of bugs. To see the effects of some of the bugs, just run the `mtk.CompanyRunner.main()` method and looks at the output. What is going on? How can we have all these bugs despite having all these test?
 
-2.  **Run the `org.pitest:pitest-maven:mutationCoverage` maven task.** You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. This task will use PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
+2.  **Run the `org.pitest:pitest-maven:mutationCoverage` maven task.** You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. To run it from the command line, execute the `mvn pitest:mutationCoverage` command. This task will use the PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
 
 3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
 
@@ -142,7 +142,7 @@ Adopting Test Driven Development (TDD) will result in better tests, better inter
     * User friendly interfaces
     * Well factored, not overly abstracted code
 
-Sounds too good to be true? The secret is that TDD does require a lot of discipline from its practitioners to work in tiny increments, diligently following the steps above, and not cutting corners. Without the discipline it is possible to end upo with tests (and code under tests) of the usual "quality".
+Sounds too good to be true? The secret is that TDD does require a lot of discipline from its practitioners to work in tiny increments, diligently following the steps above, and not cutting corners. _Without the discipline_ it is possible to end up with tests (and code under tests) of the usual "quality". _With this discipline_, a good, clean, humane design and well enough factored code may just emerge. 
 
 ### Useful Links
 * [JUnit](http://junit.org)
