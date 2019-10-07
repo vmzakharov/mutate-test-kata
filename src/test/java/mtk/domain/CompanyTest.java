@@ -36,11 +36,16 @@ public class CompanyTest
         aCompany.setName(proposedName);
 
         verify(aCompany).setName(proposedName);
+
+        aCompany.getName();
     }
 
     @Test
     public void leadingTrailingSpacesRemovedFromEmployeeName()
     {
+        /*
+         * TEST SMELL: Not testing all scenarios (e.g., no spaces, any other?)
+         */
         Employee employee1 = new Employee("001",    " Bob", 100_000.00);
         Assert.assertEquals("Bob", employee1.getName());
         Employee employee2 = new Employee("002", "Alice  ", 100_000.00);
@@ -106,8 +111,8 @@ public class CompanyTest
         this.company.addEmployee(new Employee("789", "Bob",   100_000.00));
 
         Employee employee = this.company.findEmployeeById("123");
-        employee.setName("Tom");
+        employee.setName("Tommy Lee");
         employee = this.company.findEmployeeById("123");
-        System.out.println(employee.getName().equals("Tom") ? "PASSED" : "FAILED");
+        System.out.println(employee.getName().equals("Tommy Lee") ? "PASSED" : "FAILED");
     }
 }
