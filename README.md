@@ -1,5 +1,8 @@
 # Mutation Test Kata
-Code kata: using mutation testing to improve quality of unit tests 
+Code kata: using mutation testing to improve quality of unit tests.
+
+### Summary
+This is a set of exercises that will demonstrate how having high unit test coverage numbers may be giving a false sense of security due to low quality of the tests, how to find problem spots using mutation testing and common test smells, and how to fix the problems. 
 
 ### What Is a Code Kata?
 A code kata is an exercise in programming which helps programmers hone their skills through practice. A code katas is usually set up as a series of unit tests, which fail. Your task is to write code to make them pass. The idea is inspired by the Japanese concept of kata in the martial arts. Just like in the martial arts, you can repeat a kata multiple times to make improvements to you solutions. 
@@ -29,8 +32,8 @@ The domain for the kata is made up of two classes: Company and Employee.
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
 ------------------------------------------------
-### Types of Tests
-The table below lists common types of tests in a software system. Our focus here is on unit tests, but it helps to put them in a context.
+### Unit Tests - Necessary, But Not Sufficient...
+...to build confidence in the software system under test. While our focus here is on unit tests, it helps to put them in a broader context. The table below lists common types of tests. 
 
 The meaning of the columns:
 * **Category** - A category of tests
