@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompanyFixed
 {
-    private String name = "No name";
+    private String name;
 
     private List<EmployeeFixed> employees = new ArrayList<>();
 
@@ -46,20 +46,10 @@ public class CompanyFixed
      */
     public EmployeeFixed findEmployeeById(String id)
     {
-// TODO: pick the least ugly option
-        EmployeeFixed found = this.employees.stream()
+        return this.employees.stream()
                 .filter(e -> e.getId().equals(id))
                 .findFirst()
                 .orElse(null);
-
-        for (int i = 0; i < this.employees.size(); i++)
-        {
-            if (this.employees.get(i).getId().equals(id))
-            {
-                return this.employees.get(i);
-            }
-        }
-        return null;
     }
 
     public int numberOfEmployees()

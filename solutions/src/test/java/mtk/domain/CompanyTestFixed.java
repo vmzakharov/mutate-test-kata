@@ -24,8 +24,9 @@ public class CompanyTestFixed
     @Test
     public void companyRenamed()
     {
-        String proposedName = "Cybertron Unlimited, Ltd.";
+        Assert.assertEquals("Megadyne, Inc.", this.company.getName());
 
+        String proposedName = "Cybertron Unlimited, Ltd.";
         this.company.setName(proposedName);
 
         Assert.assertEquals(proposedName, this.company.getName());
