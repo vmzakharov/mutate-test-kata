@@ -1,9 +1,10 @@
-package domain;
+package mtk.domain;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.mockito.Mockito.*;
 
@@ -31,7 +32,7 @@ public class CompanyTest
          */
         String proposedName = "Cybertron Unlimited, Ltd.";
 
-        Company aCompany = spy(this.company);
+        Company aCompany = Mockito.spy(this.company);
 
         aCompany.setName(proposedName);
 
