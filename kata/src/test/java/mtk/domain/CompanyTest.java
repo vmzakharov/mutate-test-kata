@@ -1,4 +1,4 @@
-package mtk.domain;
+package domain;
 
 import org.junit.After;
 import org.junit.Assert;
