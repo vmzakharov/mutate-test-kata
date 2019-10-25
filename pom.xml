@@ -56,7 +56,7 @@
                         <param>mtk.domain*</param>
                     </targetTests>
                     <mutators>
-                        <mutator>ALL</mutator>
+                        <mutator>NEW_DEFAULTS</mutator>
                     </mutators>
                 </configuration>
             </plugin>
