@@ -24,6 +24,12 @@ public class CompanyTestFixed
     @Test
     public void companyRenamed()
     {
+        /*
+         * TEST SMELL: Mocks are used unnecessarily and validate behavior rather than outcome
+         *
+         * Added assertion of the initial state - it is set outside of the test method and we want to confirm that our
+         * assumption about the initial state is correct
+         */
         Assert.assertEquals("Megadyne, Inc.", this.company.getName());
 
         String proposedName = "Cybertron Unlimited, Ltd.";
@@ -35,6 +41,9 @@ public class CompanyTestFixed
     @Test
     public void leadingTrailingSpacesRemovedFromEmployeeName()
     {
+        /*
+         * TEST SMELL: Not testing all distinct scenarios (e.g., no spaces, spaces in the middle)
+         */
         EmployeeFixed employee1 = new EmployeeFixed("001",    " Bob", 100_000.00);
         Assert.assertEquals("Bob", employee1.getName());
 
@@ -65,7 +74,7 @@ public class CompanyTestFixed
     public void everybodyGetsRaise()
     {
         /*
-         * TEST SMELL: Calculated expected value
+         * TEST SMELL: Calculated expected value duplicates [incorrect] logic in th code under test
          */
         double increaseBy = 0.1; // everybody's salary should go up by this fraction
 
@@ -103,7 +112,7 @@ public class CompanyTestFixed
     public void employeeNameChanged()
     {
         /*
-         * TEST SMELL: using a print/log statement
+         * TEST SMELL: using a print/log statement, requires reading the output to determine the outcome of the test
          */
         this.company.addEmployee(new EmployeeFixed("123", "Dave",  100_000.00));
         this.company.addEmployee(new EmployeeFixed("456", "Alice", 100_000.00));

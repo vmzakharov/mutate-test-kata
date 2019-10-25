@@ -9,7 +9,7 @@ public class CompanyRunner
     {
         Company company = new Company("Schnitzels and Bits");
 
-        System.out.println("Welcome to " + company.getName());
+        System.out.println("Welcome to our company, " + company.getName());
 
         company.setName("Bob's Bicycle Repair");
 

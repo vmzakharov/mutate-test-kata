@@ -27,9 +27,6 @@ public class CompanyTest
     @Test
     public void companyRenamed()
     {
-        /*
-         * TEST SMELL: Mocks are used unnecessarily and validate behavior rather than outcome
-         */
         String proposedName = "Cybertron Unlimited, Ltd.";
 
         Company aCompany = Mockito.spy(this.company);
@@ -44,9 +41,6 @@ public class CompanyTest
     @Test
     public void leadingTrailingSpacesRemovedFromEmployeeName()
     {
-        /*
-         * TEST SMELL: Not testing all scenarios (e.g., no spaces, any other?)
-         */
         Employee employee1 = new Employee("001",    " Bob", 100_000.00);
         Assert.assertEquals("Bob", employee1.getName());
         Employee employee2 = new Employee("002", "Alice  ", 100_000.00);
@@ -56,9 +50,6 @@ public class CompanyTest
     @Test
     public void employeeAdded()
     {
-        /*
-         * TEST SMELL: Irrelevant assertions
-         */
         this.company.addEmployee(new Employee("123", "Dave", 100_000.00));
         Assert.assertTrue(this.company.numberOfEmployees() > 0);
 
@@ -69,9 +60,6 @@ public class CompanyTest
     @Test
     public void everybodyGetsRaise()
     {
-        /*
-         * TEST SMELL: Calculated expected value
-         */
         double increaseBy = 0.1; // everybody's salary should go up by this fraction
 
         double davesOriginalSalary = 100_000.00;
@@ -90,9 +78,6 @@ public class CompanyTest
     @Test
     public void findEmployeeById()
     {
-        /*
-         * TEST SMELL: No assertions
-         */
         this.company.addEmployee(new Employee("123", "Dave",  100_000.00));
         this.company.addEmployee(new Employee("456", "Alice", 100_000.00));
         this.company.addEmployee(new Employee("789", "Bob",   100_000.00));
@@ -104,9 +89,6 @@ public class CompanyTest
     @Test
     public void employeeNameChanged()
     {
-        /*
-         * TEST SMELL: using a print/log statement
-         */
         this.company.addEmployee(new Employee("123", "Dave",  100_000.00));
         this.company.addEmployee(new Employee("456", "Alice", 100_000.00));
         this.company.addEmployee(new Employee("789", "Bob",   100_000.00));
