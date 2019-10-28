@@ -1,4 +1,4 @@
-# Mutation Test Kata
+# Using Mutation Testing to Improve Quality of Unit Tests 
 Code kata: using mutation testing to improve quality of unit tests.
 
 ### Summary
@@ -8,7 +8,7 @@ This is a set of exercises that will demonstrate
 * how to fix these problems 
 
 ### What Is a Code Kata?
-A code kata is an exercise in programming which helps programmers hone their skills through practice. A code kata is usually set up as a series of unit tests, which fail. Your task is to write code to make them pass. The idea is inspired by the Japanese concept of kata in the martial arts. Just like in the martial arts, you can repeat a kata multiple times to make improvements to you solutions. 
+A code kata is an exercise in programming which helps programmers hone their skills through practice. A code kata is usually set up as a series of unit tests, which fail. Your task is to write code to make them pass. The idea is inspired by the Japanese concept of kata in the martial arts. Just like in the martial arts, you can repeat a kata multiple times to make improvements to your solutions. 
  
 Please note that this kata is a little different - all the tests initially pass. Don't worry, all the same ideas mentioned above still apply here. We will improve the tests, in the process making them fail, and then we will fix the code to make the tests pass, but by then they will be good tests. 
 
@@ -18,19 +18,25 @@ To build this kata you will need
 * Maven 3.6.1 or newer
 * an IDE of your choice
 
-The domain for the kata is made up of two classes: Company and Employee.
+There are two modules in this project 
+* **kata** - contains the exercises, including the domain and test classes described below. You should be working with this module.    
+* **solutions** - contains solutions to the exercises in the kata as well as explanations of the test smells (see the "Unit Test Smells" section below). There is more than one way to solve the kata, so your solutions may not look exactly like the ones in this module, in fact you may find ways to improve on the solutions here. 
+
+The domain for the kata is made up of two classes: Company and Employee:
+
+![Domain Model](Company_Domain.png)
 
 1.  **Run all the unit tests in the `mtk.domain.CompanyTest` class.** They should all pass. Check the test coverage metrics using either maven output or a coverage reporting function in your IDE test runner. The coverage should be close to 100%. Good news: there are tests, they all pass, and they cover all of our business logic. Looks like the software is ready to ship!
 
-    Unfortunately that would be a terrible idea as the code is full of bugs. To see the effects of some of the bugs, just run the `mtk.CompanyRunner.main()` method and looks at the output. What is going on? How can we have all these bugs despite having all these test?
+    Unfortunately that would be a terrible idea as the code is full of bugs. To prove it, just take a look at the `mtk.CompanyRunner` class, which contains some simple business logic in its `main()` method. Run `mtk.CompanyRunner.main()` and looks at the console output. Does it look right? How can we have all these bugs despite having all these test?
 
-2.  **Run the `org.pitest:pitest-maven:mutationCoverage` maven task** in the module `kata`. You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. To run it from the command line, execute the `mvn pitest:mutationCoverage` command. This task will use the PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact the unit tests we have do not test what they are supposed to.
+2.  **Run the `org.pitest:pitest-maven:mutationCoverage` maven task** in the module `kata`. You can find this task under the `pitest` plugin in the `Plugins` section of your maven build file. To run it from the command line, execute the `mvn pitest:mutationCoverage` command. This task will use the PIT framework to introduce changes in the application code and then execute tests. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see plenty of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact our unit tests do not test what they are supposed to.
 
 3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
 
 4.  **Fix the business logic**, to make the tests pass. Look at the comments in the code, they may explain its intended behavior (does not mean the method as written behaves as intended). 
 
-5.   **Kill all mutants!** The tests that have been fixed this way should catch mutation introduced by PITest. When all the tests (and the logic under test) are fixed, no mutations should be able to survive. So the end state should be passing tests and dead mutants (and no smells).
+5.   **Kill all mutants!** The tests that have been fixed this way should catch mutation introduced by PIT. When all the tests (and the logic under test) are fixed, no mutations should be able to survive. So the end state should be passing tests and dead mutants (and no smells).
 
 The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
 
@@ -105,6 +111,7 @@ These are some of the practices to follow to ensure that the unit tests are effe
 * Well named - test method name describes the scenario being tested
 * Fast - the relevant tests execute in a few seconds or faster  
 * Independent - no external dependencies, no dependencies on other tests
+* Test the behavior, not the implementation
 
 ### Unit Test Smells
 These are the signs that there is possibly something wrong with the test - either because the test itself is not well written, or the code under test is not test friendly (which probably means that this code is not well factored):
@@ -138,7 +145,7 @@ Mutation testing is a way to validate the quality of unit tests. It means introd
 Adopting Test Driven Development (TDD) will result in better tests, better interfaces, less unnecessary code, and more confident and steady development process. Just follow these steps:
 
 * Write a test
-    * Take the user's perspective: "What is the API that would make my job the easiest"
+    * Take the user's perspective: "What is the API that would make my job the easiest?"
     * Think small increments
 * Make the test pass
     * Do whatever it takes: Duplication? Fine! Hardcoding the expected result? Fine!
@@ -149,9 +156,12 @@ Adopting Test Driven Development (TDD) will result in better tests, better inter
     * Almost all code is tested
     * You know when to stop coding
     * User friendly interfaces
-    * Well factored, not overly abstracted code
+    * Well factored code
+    * Just enough abstraction
+    * Just enough code
+    * Develop with confidence!
 
-Sounds too good to be true? The secret is that TDD does require a lot of discipline from its practitioners to work in tiny increments, diligently following the steps above, and not cutting corners. _Without the discipline_ it is possible to end up with tests (and code under tests) of the usual "quality". _With this discipline_, a good, clean, humane design and well enough factored code may just emerge. 
+Sounds too good to be true? The secret is that TDD does require a lot of discipline from its practitioners to work in tiny increments, diligently following the steps above, and not cutting corners. _Without the discipline_ it is likely you will end up with tests (and code under tests) of the usual "quality". 
 
 ### Useful Links
 * [JUnit](http://junit.org)
