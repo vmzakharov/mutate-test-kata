@@ -44,22 +44,22 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>${pitest.version}</version>
-                <configuration>
-                    <targetClasses>
-                        <param>mtk.domain*</param>
-                    </targetClasses>
-                    <targetTests>
-                        <param>mtk.domain*</param>
-                    </targetTests>
-                    <mutators>
-                        <mutator>NEW_DEFAULTS</mutator>
-                    </mutators>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.pitest</groupId>-->
+<!--                <artifactId>pitest-maven</artifactId>-->
+<!--                <version>${pitest.version}</version>-->
+<!--                <configuration>-->
+<!--                    <targetClasses>-->
+<!--                        <param>mtk.domain*</param>-->
+<!--                    </targetClasses>-->
+<!--                    <targetTests>-->
+<!--                        <param>mtk.domain*</param>-->
+<!--                    </targetTests>-->
+<!--                    <mutators>-->
+<!--                        <mutator>NEW_DEFAULTS</mutator>-->
+<!--                    </mutators>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -73,4 +73,38 @@
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>pitest</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>${pitest.version}</version>
+                        <executions>
+                            <execution>
+                                <id>pitest</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <targetClasses>
+                                <param>mtk.domain*</param>
+                            </targetClasses>
+                            <targetTests>
+                                <param>mtk.domain*</param>
+                            </targetTests>
+                            <mutators>
+                                <mutator>NEW_DEFAULTS</mutator>
+                            </mutators>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
