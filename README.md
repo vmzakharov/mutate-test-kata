@@ -32,7 +32,7 @@ The domain for the kata is made up of two classes: Company and Employee:
 
 2.  **Run the unit tests with mutations**. Mutations will be introduced in your code by PIT - a mutation testing tool .
     1. **Enable the `pitest` maven profile** for the project. This profile is bound to `test` phase of the maven lifecycle.
-    2. **Run the `test` task** in the module `kata`. (To run it from the command line with the profile activated, execute the `mvn test -P Pitest` command.) With the profile enabled, this task will invoke the PIT framework to first introduce changes in the application code and then execute tests.
+    2. **Run the `test` task** in the module `kata`. (To run it from the command line with the profile activated, execute the `mvn test -P pitest` command.) With the profile enabled, this task will invoke the PIT framework to first introduce changes in the application code and then execute tests.
     3. **Inspect the results**. The results are written in HTML format into a file in the `target/pit-reports/YYYYMMDDHHMI` directory. Open this file in a browser - you should see quite a bit of red. This means that some of the code mutations managed to survive - were not caught by the unit tests. Which means that in fact our unit tests do not test what they are supposed to.
 
 3.  **Fix the test smells.** Each test in the test class exhibits one or more test smells. Going through the tests one by one, fix the smell and make sure the test actually does what it is supposed to. To help you, the comments in some of the test methods explicitly say what smell is present there. Once you remove the smell, the test should start failing. This is a good thing, because now we have tests that actually validate the behavior of our software. 
