@@ -17,7 +17,7 @@
 <!--        <maven.compiler.release>11</maven.compiler.release>-->
         <junit.version>4.12</junit.version>
         <mockito.version>3.0.0</mockito.version>
-        <pitest.version>1.4.10</pitest.version>
+        <pitest.version>1.5.2</pitest.version>
     </properties>
 
     <dependencies>
@@ -44,22 +44,6 @@
 
     <build>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.pitest</groupId>-->
-<!--                <artifactId>pitest-maven</artifactId>-->
-<!--                <version>${pitest.version}</version>-->
-<!--                <configuration>-->
-<!--                    <targetClasses>-->
-<!--                        <param>mtk.domain*</param>-->
-<!--                    </targetClasses>-->
-<!--                    <targetTests>-->
-<!--                        <param>mtk.domain*</param>-->
-<!--                    </targetTests>-->
-<!--                    <mutators>-->
-<!--                        <mutator>NEW_DEFAULTS</mutator>-->
-<!--                    </mutators>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -99,7 +83,7 @@
                                 <param>mtk.domain*</param>
                             </targetTests>
                             <mutators>
-                                <mutator>NEW_DEFAULTS</mutator>
+                                <mutator>DEFAULTS</mutator>
                             </mutators>
                         </configuration>
                     </plugin>
