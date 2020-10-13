@@ -15,7 +15,7 @@
 
     <properties>
 <!--        <maven.compiler.release>11</maven.compiler.release>-->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mockito.version>3.0.0</mockito.version>
         <pitest.version>1.5.2</pitest.version>
     </properties>
