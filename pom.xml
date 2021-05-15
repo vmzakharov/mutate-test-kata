@@ -17,7 +17,7 @@
 <!--        <maven.compiler.release>11</maven.compiler.release>-->
         <junit.version>4.13.1</junit.version>
         <mockito.version>3.0.0</mockito.version>
-        <pitest.version>1.5.2</pitest.version>
+        <pitest.version>1.6.3</pitest.version>
     </properties>
 
     <dependencies>
@@ -77,10 +77,10 @@
                         </executions>
                         <configuration>
                             <targetClasses>
-                                <param>mtk.domain*</param>
+                                <param>mtk.domain.*</param>
                             </targetClasses>
                             <targetTests>
-                                <param>mtk.domain*</param>
+                                <param>mtk.domain.*</param>
                             </targetTests>
                             <mutators>
                                 <mutator>DEFAULTS</mutator>
