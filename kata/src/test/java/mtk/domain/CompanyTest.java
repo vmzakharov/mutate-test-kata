@@ -35,13 +35,13 @@ public class CompanyTest
 
         verify(aCompany).setName(proposedName);
 
-        aCompany.getName();
+        Assert.assertNotNull(aCompany.getName());
     }
 
     @Test
     public void leadingTrailingSpacesRemovedFromEmployeeName()
     {
-        Employee employee1 = new Employee("001",    " Bob", 100_000.00);
+        Employee employee1 = new Employee("001", " Bob", 100_000.00);
         Assert.assertEquals("Bob", employee1.getName());
         Employee employee2 = new Employee("002", "Alice  ", 100_000.00);
         Assert.assertEquals("Alice", employee2.getName());

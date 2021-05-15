@@ -21,6 +21,7 @@ public class Company
 
     public void setName(String newName)
     {
+        this.name = name;
     }
 
     public void addEmployee(Employee newEmployee)
@@ -35,7 +36,7 @@ public class Company
      */
     public void everybodyGetsRaiseBy(double incrementAsFraction)
     {
-        this.employees.forEach(e -> e.setSalary(e.getSalary() * (incrementAsFraction)));
+        this.employees.forEach(e -> e.setSalary(e.getSalary() * incrementAsFraction));
     }
 
     /**

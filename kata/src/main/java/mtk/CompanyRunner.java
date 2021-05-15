@@ -15,10 +15,10 @@ public class CompanyRunner
 
         System.out.println("Renamed the company to " + company.getName());
 
-        company.addEmployee(new Employee("001", "Alice", 100_000.00));
-        company.addEmployee(new Employee("002", "Bob",   120_000.00));
-        company.addEmployee(new Employee("003", "Carl",   80_000.00));
-        company.addEmployee(new Employee("004", "Bob",    90_000.00));
+        company.addEmployee(new Employee("001", " Alice", 100_000.00));
+        company.addEmployee(new Employee("002", "Bob",    120_000.00));
+        company.addEmployee(new Employee("003", "Carl",    80_000.00));
+        company.addEmployee(new Employee("004", "Bob ",    90_000.00));
 
         System.out.println("There are " + company.numberOfEmployees() + " employees at the company");
 
