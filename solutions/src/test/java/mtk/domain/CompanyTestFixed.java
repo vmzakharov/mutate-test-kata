@@ -74,7 +74,7 @@ public class CompanyTestFixed
     public void everybodyGetsRaise()
     {
         /*
-         * TEST SMELL: Calculated expected value duplicates [incorrect] logic in th code under test
+         * TEST SMELL: Calculated expected value duplicates [incorrect] logic in the code under test
          */
         double increaseBy = 0.1; // everybody's salary should go up by this fraction
 
