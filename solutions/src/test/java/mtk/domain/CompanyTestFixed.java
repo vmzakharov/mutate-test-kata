@@ -62,9 +62,9 @@ public class CompanyTestFixed
         /*
          * TEST SMELL: does not cover all scenarios
          */
-        this.company.addEmployee(new EmployeeFixed("002", "Bob",   110_000.00));
+        this.company.addEmployee(new EmployeeFixed("002", "Bob",   115_000.00));
         this.company.addEmployee(new EmployeeFixed("001", "Alice", 120_000.00));
-        this.company.addEmployee(new EmployeeFixed("003", "Carl",  115_000.00));
+        this.company.addEmployee(new EmployeeFixed("003", "Carl",  110_000.00));
 
         EmployeeFixed highestEarner = this.company.employeeWithLargestSalary();
         Assert.assertEquals("Alice", highestEarner.getName());
