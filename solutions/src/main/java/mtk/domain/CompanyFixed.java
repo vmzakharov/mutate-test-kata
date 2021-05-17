@@ -1,7 +1,9 @@
 package mtk.domain;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class CompanyFixed
 {
@@ -55,5 +57,18 @@ public class CompanyFixed
     public int numberOfEmployees()
     {
         return this.employees.size();
+    }
+
+    /**
+     * find the employee with the largest salary
+     * @return the employee with the largest salary
+     * @throws NoSuchElementException if there are no employees at the company
+     */
+    public EmployeeFixed employeeWithLargestSalary()
+    {
+        return this.employees
+                .stream()
+                .max(Comparator.comparing(EmployeeFixed::getSalary))
+                .orElseThrow(NoSuchElementException::new);
     }
 }

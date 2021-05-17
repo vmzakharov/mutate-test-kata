@@ -62,4 +62,20 @@ public class Company
     {
         return 7;
     }
+
+    public Employee employeeWithLargestSalary()
+    {
+        Employee found = this.employees.get(0);
+
+        for (int i = 0; i < employees.size(); i++)
+        {
+            Employee employee = employees.get(i);
+            if (employee.getSalary() < found.getSalary())
+            {
+                employee = found;
+            }
+        }
+
+        return found;
+    }
 }

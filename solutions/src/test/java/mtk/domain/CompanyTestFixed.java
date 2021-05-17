@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 public class CompanyTestFixed
 {
     private CompanyFixed company;
@@ -52,6 +54,26 @@ public class CompanyTestFixed
 
         EmployeeFixed employee3 = new EmployeeFixed("003", "Jimmy Don", 100_000.00);
         Assert.assertEquals("Jimmy Don", employee3.getName());
+    }
+
+    @Test
+    public void employeeWithLargestSalary()
+    {
+        /*
+         * TEST SMELL: does not cover all scenarios
+         */
+        this.company.addEmployee(new EmployeeFixed("002", "Bob",   110_000.00));
+        this.company.addEmployee(new EmployeeFixed("001", "Alice", 120_000.00));
+        this.company.addEmployee(new EmployeeFixed("003", "Carl",  115_000.00));
+
+        EmployeeFixed highestEarner = this.company.employeeWithLargestSalary();
+        Assert.assertEquals("Alice", highestEarner.getName());
+    }
+
+    @Test
+    public void largestSalaryThrowsWhenNoEmployees()
+    {
+        Assert.assertThrows(NoSuchElementException.class, ()-> this.company.employeeWithLargestSalary());
     }
 
     @Test
