@@ -127,7 +127,7 @@ These are the signs that there is possibly something wrong with the test - eithe
 * "Flickering" tests(tests with nondeterministic behavior)
 * Interdependencies between tests (e.g., execution order)
 * Long running tests
-* `@Ingore`'d or commented out tests
+* `@Ignore`'d or commented out tests
 
 These smells often come together. For example, sharing test data can lead to tests' success depending on the execution order.
 
