@@ -1,4 +1,4 @@
-# Using Mutation Testing to Improve Quality of Unit Tests 
+# Using Mutation Testing to Weed Out Fake Unit Tests
 Code kata: using mutation testing to improve quality of unit tests.
 
 ### Summary
