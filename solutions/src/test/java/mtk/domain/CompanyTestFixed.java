@@ -1,16 +1,13 @@
 package mtk.domain;
 
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Company Test Solution")
 public class CompanyTestFixed
 {
     private CompanyFixed company;
@@ -28,7 +25,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should rename Company")
     public void companyRenamed()
     {
         /*
@@ -46,7 +42,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should remove trailing spaces from employee name")
     public void leadingTrailingSpacesRemovedFromEmployeeName()
     {
         /*
@@ -63,7 +58,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should get employee with the large salary \uD83D\uDCB0")
     public void employeeWithLargestSalary()
     {
         /*
@@ -78,14 +72,12 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should throw exception when get largest salary and not employees exist")
     public void largestSalaryThrowsWhenNoEmployees()
     {
-        assertThrows(NoSuchElementException.class, ()-> this.company.employeeWithLargestSalary());
+        assertThrows(NoSuchElementException.class, () -> this.company.employeeWithLargestSalary());
     }
 
     @Test
-    @DisplayName("Should add employee")
     public void employeeAdded()
     {
         /*
@@ -102,7 +94,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should every employee gets a raise")
     public void everybodyGetsRaise()
     {
         /*
@@ -122,7 +113,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should find employee by id")
     public void findEmployeeById()
     {
         /*
@@ -142,7 +132,6 @@ public class CompanyTestFixed
     }
 
     @Test
-    @DisplayName("Should change emplyee name")
     public void employeeNameChanged()
     {
         /*
