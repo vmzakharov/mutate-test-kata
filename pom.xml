@@ -14,17 +14,18 @@
     </modules>
 
     <properties>
-        <junit.version>4.13.1</junit.version>
+        <junit.version>5.4.0</junit.version>
         <mockito.version>3.0.0</mockito.version>
-        <pitest.version>1.6.3</pitest.version>
+        <pitest.version>1.9.0</pitest.version>
+        <pitest-junit5-plugin.version>1.0.0</pitest-junit5-plugin.version>
         <checkstyle.version>8.41</checkstyle.version>
         <checkstyle.plugin.version>3.1.2</checkstyle.plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -99,6 +100,13 @@
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-maven</artifactId>
                         <version>${pitest.version}</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.pitest</groupId>
+                                <artifactId>pitest-junit5-plugin</artifactId>
+                                <version>${pitest-junit5-plugin.version}</version>
+                            </dependency>
+                        </dependencies>
                         <executions>
                             <execution>
                                 <id>pitest</id>
