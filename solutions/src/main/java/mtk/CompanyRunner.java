@@ -3,8 +3,13 @@ package mtk;
 import mtk.domain.CompanyFixed;
 import mtk.domain.EmployeeFixed;
 
-public class CompanyRunner
+final public class CompanyRunner
 {
+    private CompanyRunner()
+    {
+        // utility class
+    }
+
     public static void main(String[] args)
     {
         CompanyFixed company = new CompanyFixed("Schnitzels and Bits");

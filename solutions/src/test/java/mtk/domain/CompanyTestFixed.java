@@ -73,7 +73,7 @@ public class CompanyTestFixed
     @Test
     public void largestSalaryThrowsWhenNoEmployees()
     {
-        Assert.assertThrows(NoSuchElementException.class, ()-> this.company.employeeWithLargestSalary());
+        Assert.assertThrows(NoSuchElementException.class, () -> this.company.employeeWithLargestSalary());
     }
 
     @Test

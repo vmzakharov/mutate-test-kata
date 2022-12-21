@@ -3,8 +3,13 @@ package mtk;
 import mtk.domain.Company;
 import mtk.domain.Employee;
 
-public class CompanyRunner
+final public class CompanyRunner
 {
+    private CompanyRunner()
+    {
+        // utility class
+    }
+
     public static void main(String[] args)
     {
         Company company = new Company("Schnitzels and Bits");
