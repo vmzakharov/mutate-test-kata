@@ -30,7 +30,7 @@ public class CompanyTestFixed
         /*
          * TEST SMELL: Mocks are used unnecessarily and validate behavior rather than outcome
          *
-         * Added assertion of the initial state - it is set outside of the test method and we want to confirm that our
+         * Added assertion of the initial state - it is set outside the test method, and we want to confirm that our
          * assumption about the initial state is correct
          */
         assertEquals("Megadyne, Inc.", this.company.getName());
