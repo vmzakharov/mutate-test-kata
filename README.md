@@ -14,7 +14,7 @@ Please note that this kata is a little different - all the tests initially pass.
 
 ### Running This Kata
 To build this kata you will need
-* Java 8 or newer
+* Java 17 or newer
 * Maven 3.6.1 or newer
 * an IDE of your choice
 
@@ -41,7 +41,7 @@ The domain for the kata is made up of two classes: Company and Employee:
 
 5.   **Kill all mutants!** The tests that have been fixed this way should catch mutation introduced by PIT. When all the tests (and the logic under test) are fixed, no mutations should be able to survive. So the end state should be passing tests and dead mutants (and no smells).
 
-The rest of this documents offers some general pointers, which may come in handy if you are new to unit testing.
+The rest of this document offers some general pointers, which may come in handy if you are new to unit testing.
 
 ------------------------------------------------
 ### Unit Tests - Necessary, But Not Sufficient...
